@@ -1,0 +1,17 @@
+{
+  "id": 0,
+  "username": "ivashka",
+  "firstName": "Ivan",
+  "lastName": "Petrov",
+  "email": [
+    "one_address@mail.coom",
+    "two_address@mail.coom",
+    "three_address@mail.coom"
+    ],
+  "password": "passIvashka123",
+  "phone": {
+    "code": "+7",
+    "number": 9876543210
+    },
+  "userStatus": 0
+}
