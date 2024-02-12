@@ -3,13 +3,18 @@ package ru.ptv;
 import java.util.Scanner;
 
 public class Main {
+    public static final int MEMORY_CELL = 10;
+
     public static void main(String[] args) {
-        LandlinePhone phone = new LandlinePhone(2);
+        LandlinePhone phone = new LandlinePhone(MEMORY_CELL);
         initPhoneDirectory(phone);
     }
 
     private static void initPhoneDirectory(LandlinePhone phone) {
         System.out.println("\n *** КОНТАКТЫ ТЕЛЕФОНА ***\n\n");
+
+        System.out.println("Инициализация контактов из хранилища ...");
+        phone.showContacts();
         phone.showCommandMenu();
 
         Scanner sc = new Scanner(System.in);
@@ -25,8 +30,10 @@ public class Main {
 
             switch (commandMenu) {
                 case GO_OUT:
-                    System.out.println("\nСохранение и выход из раздела:\n\n *** КОНТАКТЫ ТЕЛЕФОНА ***");
+                    System.out.println("\nСохранение и выход из раздела");
                     sc.close();
+                    phone.saveContactsToDisk();
+                    System.out.println("\n\n *** КОНТАКТЫ ТЕЛЕФОНА ***");
                     return;
                 case NEW_CONTACT:
                     if (!phone.isAvailableForRecording()) {
