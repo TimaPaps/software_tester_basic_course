@@ -24,8 +24,6 @@ public class Main {
 
         while (sc.hasNext()) {
             inputText = sc.nextLine();
-            //TODO: delete
-            System.out.println(inputText);
             CommandMenu commandMenu = CommandMenu.getCommand(inputText);
 
             switch (commandMenu) {
@@ -47,8 +45,6 @@ public class Main {
                             "пробел введите номер телефона в формате '89999999999'\nНапример: Слава 89999999999");
 
                     inputText = sc.nextLine();
-                    //TODO: delete
-                    System.out.println(inputText);
                     split = inputText.split(" ");
                     boolean isSaved = false;
 
@@ -59,24 +55,10 @@ public class Main {
                         String name = split[0];
                         String value = split[1];
 
+                        String errorText = phone.checkNameAndValue(name, value);
 
-                        if (phone.isNotCorrectName(name)) {
-                            System.out.println("Символами имени могут быть только русские буквы. Введите команду");
-                            break;
-                        }
-
-                        if (phone.isNotCorrectValue(value)) {
-                            System.out.println("Номер должен состоять только из цифр. Введите команду");
-                            break;
-                        }
-
-                        if (phone.isNotCorrectLengthName(name)) {
-                            System.out.println("Количество символов имени должно быть от 2 до 20. Введите команду");
-                            break;
-                        }
-
-                        if (phone.isNotCorrectLengthValue(value)) {
-                            System.out.println("Количество цифр номера должно быть 11 и начинается с 8. Введите команду");
+                        if (phone.checkNameAndValue(name, value) != null) {
+                            System.out.println(errorText);
                             break;
                         }
 
@@ -122,8 +104,6 @@ public class Main {
                                 "пробел введите номер телефона в формате '89999999999'\nНапример: Слава 89999999999");
 
                         inputText = sc.nextLine();
-                        //TODO: delete
-                        System.out.println(inputText);
                         split = inputText.split(" ");
                         boolean isEdited = false;
 
@@ -134,23 +114,10 @@ public class Main {
                             String name = split[0];
                             String value = split[1];
 
-                            if (phone.isNotCorrectName(name)) {
-                                System.out.println("Символами имени могут быть только русские буквы. Введите команду");
-                                break;
-                            }
+                            String errorText = phone.checkNameAndValue(name, value);
 
-                            if (phone.isNotCorrectValue(value)) {
-                                System.out.println("Номер должен состоять только из цифр. Введите команду");
-                                break;
-                            }
-
-                            if (phone.isNotCorrectLengthName(name)) {
-                                System.out.println("Количество символов имени должно быть от 2 до 20. Введите команду");
-                                break;
-                            }
-
-                            if (phone.isNotCorrectLengthValue(value)) {
-                                System.out.println("Количество цифр номера должно быть 11 и начинается с 8. Введите команду");
+                            if (phone.checkNameAndValue(name, value) != null) {
+                                System.out.println(errorText);
                                 break;
                             }
 

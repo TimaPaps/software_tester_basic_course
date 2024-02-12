@@ -190,6 +190,26 @@ public class LandlinePhone {
         }
     }
 
+    public String checkNameAndValue(String name, String value) {
+        if (isNotCorrectName(name)) {
+            return "Символами имени могут быть только русские буквы. Введите команду";
+        }
+
+        if (isNotCorrectLengthName(name)) {
+            return "Количество символов имени должно быть от 2 до 20. Введите команду";
+        }
+
+        if (isNotCorrectValue(value)) {
+            return "Номер должен состоять только из цифр. Введите команду";
+        }
+
+        if (isNotCorrectLengthValue(value)) {
+            return "Количество цифр номера должно быть 11 и начинается с 8. Введите команду";
+        }
+
+        return null;
+    }
+
     private int getCorrectIndex(int index) {
         return index - FIRST_INDEX;
     }
@@ -198,29 +218,24 @@ public class LandlinePhone {
         return index >= 0 && index <= contacts.length - 1;
     }
 
-    public String[] checkInputTextFull(String inputText) {
-        return new String[2];
-    }
-
-    public boolean isNotCorrectName(String name) {
+    private boolean isNotCorrectName(String name) {
         String regex = "^[А-ЯЁа-яё]*$";
         return !name.matches(regex);
     }
 
-    public boolean isNotCorrectValue(String value) {
+    private boolean isNotCorrectValue(String value) {
         String regex = "^[0-9]*$";
         return !value.matches(regex);
     }
 
-    public boolean isNotCorrectLengthName(String name) {
+    private boolean isNotCorrectLengthName(String name) {
         return name.length() < 2 || name.length() > 20;
     }
 
-    public boolean isNotCorrectLengthValue(String value) {
+    private boolean isNotCorrectLengthValue(String value) {
         if (value.length() != 11)
             return true;
 
-        char c = value.charAt(0);
-        return c != '8';
+        return value.charAt(0) != '8';
     }
 }
