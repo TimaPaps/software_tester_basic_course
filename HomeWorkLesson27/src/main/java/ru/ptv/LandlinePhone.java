@@ -197,4 +197,30 @@ public class LandlinePhone {
     private boolean isRangeIndex(int index) {
         return index >= 0 && index <= contacts.length - 1;
     }
+
+    public String[] checkInputTextFull(String inputText) {
+        return new String[2];
+    }
+
+    public boolean isNotCorrectName(String name) {
+        String regex = "^[А-ЯЁа-яё]*$";
+        return !name.matches(regex);
+    }
+
+    public boolean isNotCorrectValue(String value) {
+        String regex = "^[0-9]*$";
+        return !value.matches(regex);
+    }
+
+    public boolean isNotCorrectLengthName(String name) {
+        return name.length() < 2 || name.length() > 20;
+    }
+
+    public boolean isNotCorrectLengthValue(String value) {
+        if (value.length() != 11)
+            return true;
+
+        char c = value.charAt(0);
+        return c != '8';
+    }
 }
